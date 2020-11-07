@@ -1,0 +1,343 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400&display=swap');
+
+* {
+    font: 62.5% Futura, sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    background: whitesmoke;
+}
+
+.style__container {
+    max-width: 980px;
+    margin: auto;
+}
+
+.style {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 380px;
+    background-color: #eeeeee;
+}
+
+.input__container {
+    width: 100%;
+    margin: auto;
+}
+
+.input__field {
+    position: relative;
+    margin-top: 160px;
+    /* width: fit-content; */
+}
+
+input {
+    display: block;
+    height: 56px;
+    width: 100%;
+    margin: auto;
+    border-style: solid;
+    border-radius: 5px;
+    border-color: white;
+    background: white;
+    box-shadow: 0px 0px 40px 0px rgba(232, 232, 232, 0.3);
+    transition: all 400ms;
+}
+
+input[placeholder] {
+    font-size: 1.8rem;
+    padding-left: 36px;
+}
+
+.input__field svg {
+    position: absolute;
+    top: 16px;
+    left: 8px;
+    width: 24px;
+    height: 24px;
+}
+
+input:focus {
+    outline: 0;
+    border-color: #f2f2f2;
+    box-shadow: 0px 0px 40px 0px rgba(232, 232, 232, 0.8);
+}
+
+.card__container {
+    display: grid;
+    row-gap: 16px;
+    max-width: 980px;
+    margin: 104px auto;
+}
+
+.fullview {
+    padding: 8px;
+}
+
+
+@media only screen and (min-width: 600px) {
+    .card__container {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(0, 1fr);
+        grid-column-gap: 16px;
+        grid-row-gap: 16px;
+    }
+}
+
+@media only screen and (min-width:900px) {
+    .card__container {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(0, 1fr);
+        grid-column-gap: 16px;
+        grid-row-gap: 16px;
+        /* display: grid; */
+        /* grid-template-columns: repeat(2, 1fr); */
+        /* grid-auto-rows: minmax(min-content, max-content); */
+        /* grid-template-columns: 1fr 1fr; */
+
+
+        /* grid-template-rows: 0fr 1fr fr;   */
+        /* display: grid;
+    grid-template-columns: minmax(auto-fill, 500px);
+    grid-column-gap: 20px; */
+        /* grid-template-areas: "main_content top""main_content bottom"; */
+        /* display: grid;
+    grid-template-columns:  3fr;
+    grid-template-rows: auto 1fr; */
+        /* grid-auto-flow: row; */
+        /* grid-template-rows: repeat(5, 1fr); */
+        /* column-gap: 16px; */
+        /* grid-row-gap: 16px; */
+    }
+}
+
+.card__item {
+    position: relative;
+    height: fit-content;
+    border-radius: 16px;
+    transition: all 400ms;
+}
+
+
+
+/* .card__item:nth-child(1) {
+    grid-area: 1 / 1 / 0.5 / 2;
+}
+
+.card__item:nth-child(3) {
+    grid-area: 3 / 1 / 6 / 2;
+}
+
+.card__item:nth-child(4) {
+    grid-area: 1 / 3 / 4 / 4;
+}
+
+.card__item:nth-child(5) {
+    grid-area: 4 / 2 / 7 / 3;
+}
+ 
+.card__item:nth-child(6) {
+    grid-area: 4 / 3 / 7 / 4; */
+/* } */
+
+.div2 {
+    grid-area: 1 / 2 / 4 / 3;
+}
+
+.div3 {
+    grid-area: 3 / 1 / 6 / 2;
+}
+
+.div4 {
+    grid-area: 1 / 3 / 4 / 4;
+}
+
+.div5 {
+    grid-area: 4 / 2 / 7 / 3;
+}
+
+.div6 {
+    grid-area: 4 / 3 / 7 / 4;
+}
+
+.card__item:hover {
+    transform: scale(1.02);
+
+}
+
+.info__name {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 400;
+    line-height: 1;
+    text-transform: capitalize;
+    color: #f2f2f2;
+    margin: 0 0 8px 0;
+}
+
+.location {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 1.4rem;
+    line-height: 1;
+    font-weight: 300;
+    color: #f2f2f2;
+    text-transform: capitalize;
+    margin: 0;
+}
+
+.card__info {
+    position: absolute;
+    left: 8px;
+    bottom: 16px;
+    z-index: 10;
+}
+
+img {
+    width: 100%;
+    border-radius: inherit;
+    object-fit: cover;
+}
+
+.card__item:hover .overlay {
+    opacity: 1;
+    cursor: pointer;
+}
+
+.overlay {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.3);
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    opacity: 0;
+    transition: opacity 400ms;
+}
+
+.fullview {
+    /* display: none; */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 99;
+}
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+.fullview {
+    background: rgba(255, 255, 255, 0.99);
+}
+
+.image__info {
+    margin: 16px 0 16px 0px;
+}
+
+.close svg {
+    fill: #000;
+}
+
+.close {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 24px;
+    right: 0px;
+    transform: scale(0.5);
+    transition: all 400ms;
+}
+
+.close:hover {
+    transform: scale(0.6);
+}
+
+.image__card__container {
+    width: 100%;
+    height: fit-content;
+}
+
+.image__name {
+    font-family: 'Source Sans Pro', sans-serif;
+    line-height: 1;
+    font-size: 2rem;
+    font-weight: 400;
+    margin: 0 0 8px 0;
+}
+
+.image__location {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 1.6rem;
+    line-height: 1;
+    font-weight: 300;
+    margin: 0;
+}
+
+.image__view>img {
+    width: 100%;
+    height: calc(100% - 78px);
+    background: linear-gradient(69.15deg, #F2F2F2 49.24%, #E8E8E8 49.26%, #E8E8E8 57.37%, #F2F2F2 57.39%);
+    border-radius: 0px;
+}
+
+@media only screen and (min-width: 600px) {
+    .fullview {
+        background: rgba(0, 0, 0, 0.7);
+    }
+    .image__card__container {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+    }
+
+    .image__info {
+        margin: 16px 0 16px 16px;
+    }
+
+    .fullview {
+        padding: 24px;
+    }
+
+    .image__view {
+        max-width: 900px;
+        height: 80%;
+        margin: auto;
+        border-radius: 16px;
+        background-color: #fafafa;
+    }
+
+    .image__view img {
+        border-top-left-radius: 16px;
+        border-top-right-radius: 16px;
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 0px;
+    }
+
+    .close {
+        right: 24px;
+    }
+}
+
+.fade-out {
+    animation: fade-out 400ms ease-out both;
+}
+
+@keyframes fade-out {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: none;
+        display: none;
+    }
+}
