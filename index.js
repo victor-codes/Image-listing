@@ -3,62 +3,6 @@ const overlay = document.querySelectorAll('.overlay')
 const imageFullview = document.querySelectorAll('.fullview')
 const closeFullview = document.querySelectorAll('.close')
 const cardContainer = document.getElementById('card__container')
-let tracState = false
-// image.forEach(element => {
-//     overlay.forEach(elementOver => {
-//         elementOver.style.height = element.height + 'px'
-//     });
-//     console.log(element.height);
-//     // console.log(elementOver.height);
-// });
-// function fullView() {
-//      document.querySelectorAll('.card__item')[0].addEventListener('click', function () {
-//         setTimeout(function () {
-//             imageFullview[0].style.display = 'block'
-//         }, 0)
-//         imageFullview[0].animate(
-//             [
-//                 { opacity: 0 },
-//                 { opacity: 1 }
-//             ], {
-//             fill: 'forwards',
-//             easing: 'ease-in',
-//             duration: 400
-//         });
-//     })
-// }
-// // fullView()
-// closeFullview[0].addEventListener('click', function () {
-//     imageFullview[0].animate(
-//         [
-//             { opacity: 1 },
-//             { opacity: 0 },
-//         ], {
-//         fill: 'forwards',
-//         easing: 'ease-in',
-//         duration: 400
-//     });
-//     setTimeout(function () {
-//         imageFullview[0].style.display = 'none'
-//     }, 800)
-// })
-// overlay.forEach(element => {
-
-//     element.addEventListener('click', function () {
-//         setTimeout(function () {
-//             imageFullview[0].style.display = 'block'
-//         }, 0)
-//         imageFullview[0].animate(
-//             [
-//                 { opacity: 0 },
-//                 { opacity: 1 }
-//             ], {
-//             fill: 'forwards',
-//             easing: 'ease-in',
-//             duration: 400
-//         });
-//     })
-// });
 
 fetch('image.json').then(response => {
     if (!response.ok) {
@@ -69,12 +13,11 @@ fetch('image.json').then(response => {
     return content(myJson)
 }).catch(err => console.log(`There is a problem with your fetch operation: ${err.message}`))
 function content(json) {
-    tracState = true
     json.forEach(element => {
         let title = element.title
         let url = element.url
         let location = element.location
-        // console.log(title,url,location)
+        
         let cardItem = document.createElement('div')
         let overlay = document.createElement('div')
         let cardInfo = document.createElement('div')
@@ -102,26 +45,26 @@ function content(json) {
         cardItem.appendChild(urlSrc)
 
         cardContainer.appendChild(cardItem)
+
+        cardItem.addEventListener('click', function () {
+            document.getElementById('preview').src = url
+            document.getElementById('image__name').innerHTML = title
+            document.getElementById('image__location').innerHTML = location
+            setTimeout(function () {
+                imageFullview[0].style.display = 'block'
+            }, 0)
+            imageFullview[0].animate(
+                [
+                    { opacity: 0 },
+                    { opacity: 1 }
+                ], {
+                fill: 'forwards',
+                easing: 'ease-in',
+                duration: 400
+            });
+        })
     });
 }
-
-// function fullView() {
-//     document.querySelectorAll('.card__item')[0].addEventListener('click', function () {
-//        setTimeout(function () {
-//            imageFullview[0].style.display = 'block'
-//        }, 0)
-//        imageFullview[0].animate(
-//            [
-//                { opacity: 0 },
-//                { opacity: 1 }
-//            ], {
-//            fill: 'forwards',
-//            easing: 'ease-in',
-//            duration: 400
-//        });
-//    })
-// }
-// fullView()
 
 closeFullview[0].addEventListener('click', function () {
     imageFullview[0].animate(
@@ -137,30 +80,4 @@ closeFullview[0].addEventListener('click', function () {
         imageFullview[0].style.display = 'none'
     }, 800)
 })
-function test() {
-    if (tracState) {
-        overlay.forEach(element => {
-            console.log('nice')
-            element.addEventListener('click', function () {
-                setTimeout(function () {
-                    imageFullview[0].style.display = 'block'
-                }, 0)
-                imageFullview[0].animate(
-                    [
-                        { opacity: 0 },
-                        { opacity: 1 }
-                    ], {
-                    fill: 'forwards',
-                    easing: 'ease-in',
-                    duration: 400
-                });
-            })
-        });
-    } else {
-        console.log('abominatio')
-    }
-}
-setInterval(test, 1000)
-setInterval(() => {
-    console.log(cardContainer.length)
-}, 1000);
+
