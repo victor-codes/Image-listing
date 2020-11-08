@@ -3,7 +3,6 @@ const imageFullview = document.querySelectorAll('.fullview')
 const closeFullview = document.querySelectorAll('.close')
 const cardContainer = document.getElementById('card__container')
 const searchBar = document.getElementById('input')
-const btn = document.getElementById('submit')
 let result = document.createElement('p')
 let state = false
 
@@ -96,20 +95,24 @@ function content(json) {
                     cardItem.style.display = 'block'
                     document.querySelectorAll('.z-6')[0].style.display = 'block'
                 } else {
+                    cardItem.style.display = 'none'
                     // result.textContent = `No result for "${searchBar.value}"`
                     document.querySelectorAll('.z-6')[0].style.display = 'block'
-                    cardItem.style.display = 'none'
-
                 }
             }
         }
-        btn.addEventListener('click', filter)
-        document.querySelectorAll('.z-6')[0].addEventListener('click', function() {
-            if(searchBar.value !== '') {
+        searchBar.addEventListener('input', filter)
+        document.querySelectorAll('.z-6')[0].addEventListener('click', function () {
+            if (searchBar.value !== '') {
                 searchBar.value = ''
+                result.textContent = ''
                 document.querySelectorAll('.z-6')[0].style.display = 'none'
+                cardItem.style.display = 'block'
             }
-            else document.querySelectorAll('.z-6')[0].style.display = 'none'
+            else {
+                document.querySelectorAll('.z-6')[0].style.display = 'none'
+                cardItem.style.display = 'block'
+            }
         })
 
     });

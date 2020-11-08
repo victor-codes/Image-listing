@@ -20,7 +20,7 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    height: 380px;
+    height: 60%;
     background-color: #eeeeee;
     z-index: -99;
 }
@@ -35,7 +35,7 @@ body {
     margin-top: 160px;
 }
 
-#input {
+input {
     display: block;
     height: 56px;
     width: 100%;
@@ -52,21 +52,7 @@ input[placeholder] {
     font-size: 1.8rem;
     padding-left: 36px;
 }
-#submit {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    background-color: #eeeeee;
-    font-size: 1.6rem;
-    list-style: 1;
-    height: 56px;
-    padding: 0 24px;
-    border: none;
-    transition: transform 400ms;
-}
-#submit:hover {
-    transform: scale(1.03);
-}
+
 .input__field .search {
     position: absolute;
     bottom: 16px;
@@ -75,24 +61,22 @@ input[placeholder] {
     height: 24px;
 }
 
-#input:focus {
+input:focus {
     outline: 0;
     border-color: #ffffff;
     box-shadow: 0px 0px 40px 0px rgba(34, 34, 34, 0.2);
 }
-#submit {
-    outline: 0;
-    border-color: #ffffff;
-}
+
 .z-6 {
     display: none;
     position: absolute;
     bottom: 16px;
-    right: 108px;
+    right: 16px;
     width: 24px;
     height: 24px;
     cursor: pointer;
 }
+
 .result {
     font-size: 2.8rem;
     margin: 0 0 24px 0;
@@ -255,13 +239,15 @@ img {
     padding: 8px;
 
 }
+
 .container {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100%;
 }
-#preview  {
+
+#preview {
     object-fit: cover;
     object-position: center;
     background-position: center center;
@@ -322,6 +308,7 @@ img {
     .fullview {
         background: rgba(0, 0, 0, 0.7);
     }
+
     .image__card__container {
         display: flex;
         align-items: center;
