@@ -1,23 +1,27 @@
 const image = document.querySelectorAll('img')
-const overlay = document.querySelectorAll('.overlay')
 const imageFullview = document.querySelectorAll('.fullview')
 const closeFullview = document.querySelectorAll('.close')
 const cardContainer = document.getElementById('card__container')
+const searchBar = document.getElementById('input')
+const btn = document.getElementById('submit')
+let result = document.createElement('p')
+let state = false
 
 fetch('image.json').then(response => {
     if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`)
     }
     else return response.json()
-}).then(myJson => {
-    return content(myJson)
+}).then(data => {
+    return content(data)
 }).catch(err => console.log(`There is a problem with your fetch operation: ${err.message}`))
+
 function content(json) {
     json.forEach(element => {
         let title = element.title
         let url = element.url
         let location = element.location
-        
+
         let cardItem = document.createElement('div')
         let overlay = document.createElement('div')
         let cardInfo = document.createElement('div')
@@ -63,9 +67,53 @@ function content(json) {
                 duration: 400
             });
         })
+        function filter(e) {
+            let inputLowercase = searchBar.value.toLowerCase()
+            let locationLowercase = location.toLowerCase()
+            let nameLowercase = title.toLowerCase()
+            console.log(searchBar.value);
+
+            cardItem.style.display = 'none'
+
+            if (searchBar.value.length > 0) {
+                cardItem.style.display = 'block'
+                state = true
+
+                result.classList.add('result')
+                result.textContent = `Search result for "${searchBar.value}"`
+
+                document.querySelector('.input__field').insertBefore(result, document.querySelector('.input__field').childNodes[0])
+                document.querySelectorAll('.z-6')[0].style.display = 'block'
+            }
+            if (searchBar.value.length < 1) {
+                cardItem.style.display = 'block'
+                result.textContent = ``
+                document.querySelectorAll('.z-6')[0].style.display = 'none'
+            }
+            if (state) {
+                console.log('yassssssssssssss');
+                if (locationLowercase.match(inputLowercase) || (nameLowercase.match(inputLowercase))) {
+                    cardItem.style.display = 'block'
+                    document.querySelectorAll('.z-6')[0].style.display = 'block'
+                } else {
+                    // result.textContent = `No result for "${searchBar.value}"`
+                    document.querySelectorAll('.z-6')[0].style.display = 'block'
+                    cardItem.style.display = 'none'
+
+                }
+            }
+        }
+        btn.addEventListener('click', filter)
+        document.querySelectorAll('.z-6')[0].addEventListener('click', function() {
+            if(searchBar.value !== '') {
+                searchBar.value = ''
+                document.querySelectorAll('.z-6')[0].style.display = 'none'
+            }
+            else document.querySelectorAll('.z-6')[0].style.display = 'none'
+        })
+
     });
 }
-
 closeFullview[0].addEventListener('click', function () {
     imageFullview[0].animate(
         [
