@@ -71,6 +71,7 @@ input:focus {
     height: 24px;
     cursor: pointer;
 }
+
 .clear {
     display: none;
     position: absolute;
@@ -105,7 +106,7 @@ input:focus {
         grid-gap: 24px;
         grid-template-columns: repeat(3, 1fr);
     }
-    
+
 }
 
 .card__item {
@@ -115,7 +116,8 @@ input:focus {
     transition: all 400ms;
 }
 
-.card__item:hover, .card__item:focus {
+.card__item:hover,
+.card__item:focus {
     transform: scale(1.03);
     box-shadow: 0 0 40px rgba(0, 0, 0, 0.16);
     outline: 0;
@@ -154,7 +156,8 @@ img {
     object-fit: cover;
 }
 
-.card__item:hover .overlay, .card__item:focus .overlay {
+.card__item:hover .overlay,
+.card__item:focus .overlay {
     opacity: 1;
     cursor: pointer;
 }
@@ -215,6 +218,7 @@ img {
     transform: scale(0.5);
     transition: all 400ms;
 }
+
 button {
     background-color: transparent;
     border: none;
@@ -223,15 +227,16 @@ button {
     transition: all 400ms;
     width: fit-content;
 }
+
 button:focus {
     outline: 0;
     box-shadow: 0 0 0 1px hsl(211, 27%, 85%);
-    /* background-color: hsl(211, 27%, 85%); */
-
 }
+
 .close:hover {
     transform: scale(0.6);
 }
+
 .closebtn:focus {
     transform: scale(1.2);
 
