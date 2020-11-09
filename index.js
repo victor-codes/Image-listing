@@ -47,6 +47,8 @@ function content(json) {
         cardItem.appendChild(cardInfo)
         cardItem.appendChild(urlSrc)
 
+        cardItem.tabIndex = 'true'
+
         cardContainer.appendChild(cardItem)
 
         cardItem.addEventListener('click', function () {
@@ -66,51 +68,52 @@ function content(json) {
                 duration: 400
             });
         })
-        function filter(e) {
-            let inputLowercase = searchBar.value.toLowerCase()
-            let locationLowercase = location.toLowerCase()
-            let nameLowercase = title.toLowerCase()
-            console.log(searchBar.value);
+        function filter() {
+            setTimeout(function () {
+                let inputLowercase = searchBar.value.toLowerCase()
+                let locationLowercase = location.toLowerCase()
+                let nameLowercase = title.toLowerCase()
 
-            cardItem.style.display = 'none'
+                cardItem.style.display = 'none'
 
-            if (searchBar.value.length > 0) {
-                cardItem.style.display = 'block'
-                state = true
-
-                result.classList.add('result')
-                result.textContent = `Search result for "${searchBar.value}"`
-
-                document.querySelector('.input__field').insertBefore(result, document.querySelector('.input__field').childNodes[0])
-                document.querySelectorAll('.z-6')[0].style.display = 'block'
-            }
-            if (searchBar.value.length < 1) {
-                cardItem.style.display = 'block'
-                result.textContent = ``
-                document.querySelectorAll('.z-6')[0].style.display = 'none'
-            }
-            if (state) {
-                console.log('yassssssssssssss');
-                if (locationLowercase.match(inputLowercase) || (nameLowercase.match(inputLowercase))) {
+                if (searchBar.value.length > 0) {
                     cardItem.style.display = 'block'
-                    document.querySelectorAll('.z-6')[0].style.display = 'block'
-                } else {
-                    cardItem.style.display = 'none'
-                    // result.textContent = `No result for "${searchBar.value}"`
-                    document.querySelectorAll('.z-6')[0].style.display = 'block'
+                    state = true
+
+                    result.classList.add('result')
+                    result.textContent = `Search result for "${searchBar.value}"`
+
+                    document.querySelector('.input__field').insertBefore(result, document.querySelector('.input__field').childNodes[0])
+                    document.querySelectorAll('.clear')[0].style.display = 'block'
                 }
-            }
+                if (searchBar.value.length < 1) {
+                    console.log('yassssssssssss');
+                    document.querySelectorAll('.clear')[0].style.display = 'none'
+                    cardItem.style.display = 'block'
+                    result.textContent = ``
+                }
+                if (state) {
+                    if (locationLowercase.match(inputLowercase) || (nameLowercase.match(inputLowercase))) {
+                        cardItem.style.display = 'block'
+                        document.querySelectorAll('.clear')[0].style.display = 'block'
+                    } else {
+                        cardItem.style.display = 'none'
+                        // result.textContent = `No result for "${searchBar.value}"`
+                        document.querySelectorAll('.clear')[0].style.display = 'block'
+                    }
+                }
+            }, 800)
         }
         searchBar.addEventListener('input', filter)
-        document.querySelectorAll('.z-6')[0].addEventListener('click', function () {
+        document.querySelectorAll('.clear')[0].addEventListener('click', function () {
             if (searchBar.value !== '') {
                 searchBar.value = ''
                 result.textContent = ''
-                document.querySelectorAll('.z-6')[0].style.display = 'none'
+                document.querySelectorAll('.clear')[0].style.display = 'none'
                 cardItem.style.display = 'block'
             }
             else {
-                document.querySelectorAll('.z-6')[0].style.display = 'none'
+                document.querySelectorAll('.clear')[0].style.display = 'none'
                 cardItem.style.display = 'block'
             }
         })

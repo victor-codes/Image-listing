@@ -21,7 +21,7 @@ body {
     left: 0;
     width: 100%;
     height: 60%;
-    background-color: #eeeeee;
+    background-color: hsl(211, 27%, 85%);
     z-index: -99;
 }
 
@@ -39,7 +39,6 @@ input {
     display: block;
     height: 56px;
     width: 100%;
-    /* margin: auto; */
     border-style: solid;
     border-radius: 5px;
     border-color: white;
@@ -68,23 +67,26 @@ input:focus {
 }
 
 .z-6 {
-    display: none;
-    position: absolute;
-    bottom: 16px;
-    right: 16px;
     width: 24px;
     height: 24px;
     cursor: pointer;
 }
+.clear {
+    display: none;
+    position: absolute;
+    right: 16px;
+    bottom: 14px;
+}
 
 .result {
     font-size: 2.8rem;
+    color: hsl(211, 27%, 25%);
     margin: 0 0 24px 0;
 }
 
 .card__container {
     display: grid;
-    row-gap: 16px;
+    row-gap: 24px;
     max-width: 944px;
     margin: 104px auto;
 }
@@ -93,36 +95,17 @@ input:focus {
     .card__container {
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: repeat(0, 1fr);
-        grid-column-gap: 16px;
-        grid-row-gap: 16px;
+        grid-gap: 24px;
     }
 }
 
 @media only screen and (min-width:900px) {
     .card__container {
+        /* grid-template-rows: repeat(1, minmax(20px, 400px)); */
+        grid-gap: 24px;
         grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: repeat(0, 1fr);
-        grid-column-gap: 16px;
-        grid-row-gap: 16px;
-        /* display: grid; */
-        /* grid-template-columns: repeat(2, 1fr); */
-        /* grid-auto-rows: minmax(min-content, max-content); */
-        /* grid-template-columns: 1fr 1fr; */
-
-
-        /* grid-template-rows: 0fr 1fr fr;   */
-        /* display: grid;
-    grid-template-columns: minmax(auto-fill, 500px);
-    grid-column-gap: 20px; */
-        /* grid-template-areas: "main_content top""main_content bottom"; */
-        /* display: grid;
-    grid-template-columns:  3fr;
-    grid-template-rows: auto 1fr; */
-        /* grid-auto-flow: row; */
-        /* grid-template-rows: repeat(5, 1fr); */
-        /* column-gap: 16px; */
-        /* grid-row-gap: 16px; */
     }
+    
 }
 
 .card__item {
@@ -132,51 +115,10 @@ input:focus {
     transition: all 400ms;
 }
 
-
-
-/* .card__item:nth-child(1) {
-    grid-area: 1 / 1 / 0.5 / 2;
-}
-
-.card__item:nth-child(3) {
-    grid-area: 3 / 1 / 6 / 2;
-}
-
-.card__item:nth-child(4) {
-    grid-area: 1 / 3 / 4 / 4;
-}
-
-.card__item:nth-child(5) {
-    grid-area: 4 / 2 / 7 / 3;
-}
- 
-.card__item:nth-child(6) {
-    grid-area: 4 / 3 / 7 / 4; */
-/* } */
-
-.div2 {
-    grid-area: 1 / 2 / 4 / 3;
-}
-
-.div3 {
-    grid-area: 3 / 1 / 6 / 2;
-}
-
-.div4 {
-    grid-area: 1 / 3 / 4 / 4;
-}
-
-.div5 {
-    grid-area: 4 / 2 / 7 / 3;
-}
-
-.div6 {
-    grid-area: 4 / 3 / 7 / 4;
-}
-
-.card__item:hover {
-    transform: scale(1.02);
-
+.card__item:hover, .card__item:focus {
+    transform: scale(1.03);
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.16);
+    outline: 0;
 }
 
 .info__name {
@@ -212,7 +154,7 @@ img {
     object-fit: cover;
 }
 
-.card__item:hover .overlay {
+.card__item:hover .overlay, .card__item:focus .overlay {
     opacity: 1;
     cursor: pointer;
 }
@@ -252,6 +194,7 @@ img {
     object-position: center;
     background-position: center center;
     width: 100%;
+    min-height: 300px;
 }
 
 .image__info {
@@ -272,9 +215,26 @@ img {
     transform: scale(0.5);
     transition: all 400ms;
 }
+button {
+    background-color: transparent;
+    border: none;
+    border-style: solid;
+    border: 0;
+    transition: all 400ms;
+    width: fit-content;
+}
+button:focus {
+    outline: 0;
+    box-shadow: 0 0 0 1px hsl(211, 27%, 85%);
+    /* background-color: hsl(211, 27%, 85%); */
 
+}
 .close:hover {
     transform: scale(0.6);
+}
+.closebtn:focus {
+    transform: scale(1.2);
+
 }
 
 .image__card__container {
@@ -342,20 +302,5 @@ img {
 
     .close {
         right: 24px;
-    }
-}
-
-.fade-out {
-    animation: fade-out 400ms ease-out both;
-}
-
-@keyframes fade-out {
-    0% {
-        opacity: 1;
-    }
-
-    100% {
-        opacity: none;
-        display: none;
     }
 }
