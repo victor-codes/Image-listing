@@ -55,9 +55,11 @@ function content(json) {
             document.getElementById('preview').src = url;
             document.getElementById('image__name').innerHTML = title;
             document.getElementById('image__location').innerHTML = location;
-            setTimeout( () => {
+            
+            setTimeout(() => {
                 imageFullview[0].style.display = 'block';
             }, 0);
+
             imageFullview[0].animate(
                 [
                     { opacity: 0 },
@@ -69,7 +71,7 @@ function content(json) {
             });
         });
         function filter() {
-            setTimeout( () => {
+            setTimeout(() => {
                 let inputLowercase = searchBar.value.toLowerCase().trim();
                 let locationLowercase = location.toLowerCase();
                 let nameLowercase = title.toLowerCase();
@@ -103,6 +105,7 @@ function content(json) {
                 }
             }, 800);
         };
+
         searchBar.addEventListener('input', filter);
         document.querySelectorAll('.clear')[0].addEventListener('click', () => {
             if (searchBar.value !== '') {
@@ -116,9 +119,9 @@ function content(json) {
                 cardItem.style.display = 'block';
             }
         });
-
     });
 };
+
 closeFullview[0].addEventListener('click', () => {
     imageFullview[0].animate(
         [
@@ -129,7 +132,8 @@ closeFullview[0].addEventListener('click', () => {
         easing: 'ease-in',
         duration: 400
     });
-    setTimeout( () => {
+
+    setTimeout(() => {
         imageFullview[0].style.display = 'none';
     }, 800);
 });
